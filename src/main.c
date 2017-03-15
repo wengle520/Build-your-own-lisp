@@ -74,6 +74,11 @@ int main(int argc, char **argv) {
 			char* input = readline("wengle> ");
 			add_history(input);
 
+			if(strcmp(input, "exit") == 0){
+				mpc_cleanup(8, Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Wengle);
+				lval_exit(input, e);
+			}
+
 			mpc_result_t r;
 			if (mpc_parse("<stdin>", input, Wengle, &r)) {
 
